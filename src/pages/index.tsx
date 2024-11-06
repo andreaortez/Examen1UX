@@ -2,6 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import localFont from "next/font/local";
 import styles from "@/styles/Home.module.css";
+import React from 'react';
+import Carousel from 'react-material-ui-carousel'
+import { Paper, Button } from '@mui/material'
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
