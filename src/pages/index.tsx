@@ -16,7 +16,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -55,11 +54,13 @@ function ResponsiveAppBar() {
     <AppBar position="static" sx={{ backgroundColor: 'black' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
-            alt="Logo"
-            style={{ width: 130, height: 40 }}
-          />
+          <IconButton sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+              alt="Logo"
+              style={{ width: 130, height: 40 }}
+            />
+          </IconButton>
           <Typography
             variant="h6"
             noWrap
@@ -112,7 +113,13 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <IconButton sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
+              alt="Logo"
+              style={{ width: 130, height: 40 }}
+            />
+          </IconButton>
           <Typography
             variant="h5"
             noWrap
@@ -129,7 +136,6 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -173,7 +179,7 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 }
 export default ResponsiveAppBar;
