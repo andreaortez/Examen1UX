@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import * as React from 'react';
 import Carrusel from './carrusel';
 import AppBar from './appbar';
+import Secciones from './secciones';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,6 +27,7 @@ export default function Home() {
       </Head>
       <AppBar />
       <Carrusel />
+      <Secciones titulo="Continuar Viendo"/>
     </>
   );
 }
