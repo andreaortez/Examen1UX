@@ -20,6 +20,10 @@ const geistMono = localFont({
 export default function Home() {
   return (
     <>
+      <Head>
+        <link rel="icon" href="/imagenes/netflixLogo.png" />
+        <title>Netflix</title>
+      </Head>
       <AppBar />
       <Carrusel />
     </>
