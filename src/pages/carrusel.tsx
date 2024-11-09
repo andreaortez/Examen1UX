@@ -46,7 +46,7 @@ function Carrusel() {
     ]
 
     return (
-        <Carousel sx={{ width: '100vw' }}>
+        <Carousel indicators={false} sx={{ width: '100vw' }}>
             {
                 items.map((item, i) => <Item key={i} item={item} />)
             }

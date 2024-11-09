@@ -21,6 +21,22 @@ function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [bgColor, setBgColor] = React.useState('transparent');
+
+    const handleScroll = () => {
+        if (window.scrollY > 100) {
+            setBgColor('#151515');
+        } else {
+            setBgColor('transparent');
+        }
+    };
+
+    React.useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [])
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -41,8 +57,23 @@ function ResponsiveAppBar() {
 
     return (
         <AppBar position="fixed" sx={{
-            backgroundColor: 'transparent', boxShadow: 'none', textTransform: 'none',
+            backgroundColor: bgColor,
+            boxShadow: 'none',
+            textTransform: 'none',
+            transition: 'background-color 0.3s ease',
         }}>
+            {/* Capa oscura en degradado*/}
+            <div
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))',
+                    zIndex: 0,
+                }}
+            ></div>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <IconButton sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
@@ -63,7 +94,7 @@ function ResponsiveAppBar() {
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
+                            color: 'inherit'
                         }}
                     >
                     </Typography>
@@ -123,6 +154,7 @@ function ResponsiveAppBar() {
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
+                            zIndex: 2,
                         }}
                     >
                     </Typography>

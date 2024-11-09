@@ -28,7 +28,7 @@ body {
 body {
   font-family: 'Netflix Sans', sans-serif;
   color: white;
-  background: black;
+  background: #151515;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

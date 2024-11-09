@@ -12,6 +12,7 @@ interface Propiedades {
         titulo: string;
     }[];
 }
+
 interface cardProp {
     titulo: string;
     imagen: string;
