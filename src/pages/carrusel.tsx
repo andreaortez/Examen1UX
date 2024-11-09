@@ -91,7 +91,8 @@ function Item(props: any) {
                 alignItems: 'flex-start',
                 gap: '10px',
                 paddingRight: '60%',
-                zIndex: 2
+                zIndex: 2,
+                paddingLeft: '5px'
             }}>
                 <img src={props.item.logo} alt="logo" width="80%" height="20%" />
                 <p id="sinopsisStyle">{props.item.sinopsis}</p>
