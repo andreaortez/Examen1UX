@@ -17,7 +17,8 @@ interface cardProp {
     titulo: string;
     imagen: string;
 }
-//TOdo  de Styled se supone que es pal hover, pero capaz cambie
+
+//Todo  de Styled se supone que es pal hover, pero capaz cambie
 const StyledCard = styled(Card)(({ theme }) => ({
     maxWidth: '100%',
     transition: "transform 0.15s ease-in-out",
@@ -41,10 +42,14 @@ const StyledCard = styled(Card)(({ theme }) => ({
         zIndex: 10,
     }
 }));
-// Update Typography styling to ensure it doesn't interfere
+
 const StyledTypography = styled(Typography)(({ theme }) => ({
     position: 'relative',  // Ensure it has a positioning context
-    zIndex: 1, // Give it a lower z-index than the card
+    zIndex: 1,
+    fontSize: '18px',
+    fontWeight: 'bold',
+    color: '#e5e5e5',
+    fontFamily: 'Netflix Sans'
 }));
 
 // Functions
