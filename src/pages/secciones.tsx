@@ -7,16 +7,16 @@ import { ShowChart } from '@mui/icons-material';
 //Interfaces
 interface Propiedades {
     titulo: string;
-    cards: { 
+    cards: {
         imagen: string;
         titulo: string;
     }[];
 }
+
 interface cardProp {
     titulo: string;
     imagen: string;
 }
-
 
 //Funciones
 function Secciones({ titulo, cards }: Propiedades) {
@@ -27,7 +27,6 @@ function Secciones({ titulo, cards }: Propiedades) {
     const largeScreen = useMediaQuery(useTheme().breakpoints.down('lg'));
     const xlargeScreen = useMediaQuery(useTheme().breakpoints.down('xl'));
     const row = () => {
-
 
         let n_stack = Math.ceil(cards.length / showCards);
         return (
@@ -61,29 +60,29 @@ function Secciones({ titulo, cards }: Propiedades) {
             <Typography
                 variant='h6'
                 sx={{
-                    mt: { xs: 0.5, sm: 1, md: 1.5 }, 
-                    mb: { xs: 0.5, sm: 1, md: 1.5 }, 
-                    ml: { xs: 1, sm: 2, md: 3 }, 
+                    mt: { xs: 0.5, sm: 1, md: 1.5 },
+                    mb: { xs: 0.5, sm: 1, md: 1.5 },
+                    ml: { xs: 1, sm: 2, md: 3 },
                 }}
             >
                 {titulo}
             </Typography>
-    
+
             <Carousel
                 indicators={false}
                 autoPlay={false}
                 sx={{
                     width: '95vw',
-                    mt: { xs: 0.5, sm: 1, md: 1.5 }, 
-                    mb: { xs: 0.5, sm: 1, md: 1.5 }, 
-                    ml: { xs: 1, sm: 2, md: 3 }, 
+                    mt: { xs: 0.5, sm: 1, md: 1.5 },
+                    mb: { xs: 0.5, sm: 1, md: 1.5 },
+                    ml: { xs: 1, sm: 2, md: 3 },
                 }}
             >
                 {row()}
             </Carousel>
         </div>
     )
-    
+
 }
 
 function Item({ imagen, titulo }: cardProp) {
