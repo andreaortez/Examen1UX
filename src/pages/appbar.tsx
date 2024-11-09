@@ -11,6 +11,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 const pages = ['Inicio', 'Series', 'Películas', 'Novedades Populares', 'Mi Lista', 'Explora por idiomas'];
 const settings = ['Administrar perfiles', 'Transferir perfil', 'Cuenta', 'Cerrar sesión'];
@@ -18,12 +20,14 @@ const settings = ['Administrar perfiles', 'Transferir perfil', 'Cuenta', 'Cerrar
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
     };
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
+        setIsMenuOpen(!isMenuOpen);
     };
 
     const handleCloseNavMenu = () => {
@@ -32,6 +36,7 @@ function ResponsiveAppBar() {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
+        setIsMenuOpen(!isMenuOpen);
     };
 
     return (
@@ -59,7 +64,6 @@ function ResponsiveAppBar() {
                             fontWeight: 700,
                             letterSpacing: '.3rem',
                             color: 'inherit',
-                            textDecoration: 'none'
                         }}
                     >
                     </Typography>
@@ -115,7 +119,6 @@ function ResponsiveAppBar() {
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
                             flexGrow: 1,
-                            fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
                             color: 'inherit',
@@ -128,16 +131,51 @@ function ResponsiveAppBar() {
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{
+                                    my: 2,
+                                    color: 'white',
+                                    display: 'block',
+                                    textTransform: 'none',
+                                    backgroundColor: 'transparent',
+                                    '&:hover': {
+                                        color: '#adaeae',
+                                    },
+                                    transition: 'color 0.3s ease',
+                                }}
                             >
                                 {page}
                             </Button>
                         ))}
                     </Box>
-                    <Box sx={{ flexGrow: 0 }}>
+                    <Box sx={{
+                        flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', marginRight: 2,
+                    }}>
+                        <Button sx={{ minWidth: 5, padding: 1 }}>
+                            < img src="/imagenes/busqueda.png" alt="Buscar"
+                                style={{ width: 25, height: 25 }}
+                            />
+                        </Button>
+                        <Button sx={{ minWidth: 5, padding: 1, color: 'white', textTransform: 'none' }}>
+                            <p>Niños</p>
+                        </Button>
+                        <Button sx={{ minWidth: 5, padding: 1 }}>
+                            <img src="/imagenes/notificacion.png" alt="Notificaciones"
+                                style={{ width: 25, height: 25 }}
+                            />
+                        </Button>
+                    </Box>
+
+                    {/* avatar */}
+                    <Box sx={{ flexGrow: 0, position: 'relative' }}
+                    >
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar alt="Remy Sharp" src="/imagenes/icon.png" sx={{ borderRadius: '10%' }} />
+                                {isMenuOpen ? (
+                                    <ArrowDropUpIcon sx={{ color: 'white', ml: 1 }} />
+                                ) : (
+                                    <ArrowDropDownIcon sx={{ color: 'white', ml: 1 }} />
+                                )}
                             </IconButton>
                         </Tooltip>
                         <Menu

@@ -35,12 +35,11 @@
 
 #ageStyle {
     background-color: rgba(58, 58, 58, 0.7);
-    width: 100px;
-    height: 30px;
-    border-left: 10px;
-    border-left-color: white;
-    padding-left: 8px;
+    width: 101px;
+    height: 32px;
+    padding-left: 10px;
     align-content: space-evenly;
+    font-size: 15px;
 }
 
 #sinopsisStyle {

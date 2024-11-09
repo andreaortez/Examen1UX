@@ -1,34 +1,47 @@
-import React from 'react';
+import * as React from 'react';
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
-import { transform } from 'next/dist/build/swc/generated-native';
+import Box from '@mui/material/Box';
+
+/*interface imagen{
+    logo:string;
+    sinopsis:string;
+    poster: string;
+    ageRating: string;
+}*/
 
 function Carrusel() {
+    //var items: [imagen] = [] 
     var items = [
         {
             logo: "/imagenes/Money-Heist-TV-Series-Transparent-PNG.png",
             sinopsis: "Ocho atracadores toman rehenes en la Fábrica Nacional de la Moneda y Timbre española. Desde el encierro, su líder manipula a la policía para llevar a cabo un ambicioso plan.",
-            poster: "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABc7R0qrWkseUdnsSLyVh5e5e_vgCraODavnyye0ZsJ7K7N4TlqDHzksDensvy44ZEZ8ukX6FqFnvA_UA3y0foZ3S7ye9vbsTEe1c.jpg?r=244"
+            poster: "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABc7R0qrWkseUdnsSLyVh5e5e_vgCraODavnyye0ZsJ7K7N4TlqDHzksDensvy44ZEZ8ukX6FqFnvA_UA3y0foZ3S7ye9vbsTEe1c.jpg?r=244",
+            ageRating: "16+"
         },
         {
             logo: "/imagenes/wednesday.png",
             sinopsis: "Inteligente, sarcástica y un poco muerta por dentro, Merlina Addams investiga una ola de asesinatos mientras hace nuevos amigos (y enemigos) en la Academia Nunca Más.",
-            poster: "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABXErLwqyljXtI6mMH6VMnF6B1L4085vOdGb62ZhaqZTL04oFjCUhzdkkK434vs50cKZVHoPJ2pNc-JY4dSw0UoyBRAZiD7sNADpJ.jpg?r=615g"
+            poster: "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABXErLwqyljXtI6mMH6VMnF6B1L4085vOdGb62ZhaqZTL04oFjCUhzdkkK434vs50cKZVHoPJ2pNc-JY4dSw0UoyBRAZiD7sNADpJ.jpg?r=615g",
+            ageRating: "13+"
         },
         {
             logo: "/imagenes/Stranger-Things-logo.png",
             sinopsis: "En 1983, un niño desaparece en plena noche. Sus amigos aplican su experiencia con juegos de rol para encontrarlo, pero algo extraño se retuerce debajo de la superficie.",
-            poster: "/imagenes/465b406173028aa3d4b9def1be5d9dba.jpg"
+            poster: "/imagenes/465b406173028aa3d4b9def1be5d9dba.jpg",
+            ageRating: "16+"
         },
         {
             logo: "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABUptnGA5PuT6zRp-GyzW2zKGzTITMPmhBUbI33s5y_7QqylLfYOL8bkxAvc2litm3FRrzVfprsPChmhTRXYqvF8-ZpsRgVW7ZZ74bh17itQxM0h7svhoqTe8BIkgK-_uP8HHMizTOIcuHoLEs-INupgA-4zQQwQk-OkQFDCMx_yoyd1SCWQgwg.png?r=90b",
             sinopsis: "Mientras las debutantes anhelan ser los diamantes más relucientes del baile, una discreta gema con una doble vida descubre su propio brillo entre secretos y sorpresas.",
-            poster: "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABSnaAaERnfVT8smuWuTPQxLOPFiSz_QuZAQrXMtHpFbvwOBYbcT6aS13tbPvTGnuWF0UbGZSLhRohbMY6jH2t33HaLRM6z4kE0C2.jpg?r=036"
+            poster: "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABSnaAaERnfVT8smuWuTPQxLOPFiSz_QuZAQrXMtHpFbvwOBYbcT6aS13tbPvTGnuWF0UbGZSLhRohbMY6jH2t33HaLRM6z4kE0C2.jpg?r=036",
+            ageRating: "16+"
         },
         {
             logo: "https://www.pngplay.com/wp-content/uploads/12/Jumanji-Free-PNG.png",
             sinopsis: "Un videojuego absorbe a cuatro estudiantes. Una vez en la selva, deben enbarcarse en una búsqueda en sus avatares, que no coinciden para nada con la realidad.",
-            poster: "https://i.blogs.es/1932bb/cartel-jumanji-bienvenidos-a-la-jungla/1366_2000.jpg"
+            poster: "https://i.blogs.es/1932bb/cartel-jumanji-bienvenidos-a-la-jungla/1366_2000.jpg",
+            ageRating: "13+"
         }
     ]
 
@@ -51,7 +64,8 @@ function Item(props: any) {
                 height: '631px',
                 color: 'white',
                 position: 'relative',
-                padding: '20px'
+                padding: '20px',
+                fontFamily: 'Netflix Sans'
             }}
         >
             {/* Capa oscura en degradado*/}
@@ -76,7 +90,7 @@ function Item(props: any) {
                 flexDirection: 'column',
                 alignItems: 'flex-start',
                 gap: '10px',
-                paddingRight: '50%',
+                paddingRight: '60%',
                 zIndex: 2
             }}>
                 <img src={props.item.logo} alt="logo" width="80%" height="20%" />
@@ -98,20 +112,20 @@ function Item(props: any) {
                         />
                         Más información
                     </Button>
-                    <div id="ageStyle" style={{
-                        position: 'absolute',
-                        bottom: '100px',
-                        right: '20px',
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Fondo semitransparente opcional
-                        padding: '5px 10px',
-                        borderRadius: '4px',
-                        color: 'white',
-                    }}>
-                        <p>18+</p>
-                    </div>
                 </div>
             </div>
-
+            <Box id="ageStyle" sx={{
+                position: 'absolute',
+                right: '0px',
+                top: '69%',
+                alignItems: 'center',
+                borderLeft: '3px solid white',
+                color: 'white',
+                zIndex: 2,
+                display: { xs: 'none', md: 'flex' }
+            }}>
+                <p>{props.item.ageRating}</p>
+            </Box>
         </Paper >
     )
 }
