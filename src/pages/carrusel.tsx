@@ -3,16 +3,15 @@ import Carousel from 'react-material-ui-carousel'
 import { Paper, Button } from '@mui/material'
 import Box from '@mui/material/Box';
 
-/*interface imagen{
-    logo:string;
-    sinopsis:string;
+interface imagen {
+    logo: string;
+    sinopsis: string;
     poster: string;
     ageRating: string;
-}*/
+}
 
 function Carrusel() {
-    //var items: [imagen] = [] 
-    var items = [
+    const slide: imagen[] = [
         {
             logo: "/imagenes/Money-Heist-TV-Series-Transparent-PNG.png",
             sinopsis: "Ocho atracadores toman rehenes en la Fábrica Nacional de la Moneda y Timbre española. Desde el encierro, su líder manipula a la policía para llevar a cabo un ambicioso plan.",
@@ -48,7 +47,7 @@ function Carrusel() {
     return (
         <Carousel indicators={false} sx={{ width: '100vw' }}>
             {
-                items.map((item, i) => <Item key={i} item={item} />)
+                slide.map((item, i) => <Item key={i} item={item} />)
             }
         </Carousel>
     )

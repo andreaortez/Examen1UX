@@ -43,10 +43,9 @@ const StyledCard = styled(Card)(({ theme }) => ({
 }));
 
 // Functions
-// Functions
 function Secciones({ titulo, cards }: Propiedades) {
     // Variables
-    const [showCards, setShowCards] = useState(6);
+    const [showCards, setShowCards] = useState(5);
     const smallScreen = useMediaQuery(useTheme().breakpoints.down('sm'));
     const mediumScreen = useMediaQuery(useTheme().breakpoints.down('md'));
     const largeScreen = useMediaQuery(useTheme().breakpoints.down('lg'));
@@ -75,7 +74,7 @@ function Secciones({ titulo, cards }: Propiedades) {
         } else if (largeScreen) {
             setShowCards(4);
         } else if (xlargeScreen) {
-            setShowCards(6);
+            setShowCards(5);
         }
     }, [smallScreen, mediumScreen, largeScreen, xlargeScreen]);
 
@@ -95,6 +94,7 @@ function Secciones({ titulo, cards }: Propiedades) {
             <Carousel
                 indicators={false}
                 autoPlay={false}
+                animation="slide"
                 sx={{
                     zIndex: 1,
                     overflow: 'visible',

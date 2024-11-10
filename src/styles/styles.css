@@ -52,3 +52,60 @@
     font-size: 10px;
     font-weight: bold;
 }
+
+.footer {
+    padding: 10%;
+    padding-bottom: 15px;
+    color: #7f7e7b;
+    font-size: 13px;
+}
+
+#redes {
+    gap: 20px;
+    display: flex;
+    align-content: center;
+    padding-bottom: 15px;
+}
+
+.footerTextStyle {
+    display: grid;
+    gap: 20px;
+    padding-bottom: 3%;
+}
+
+.footerTextStyle div p:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 1024px) {
+    .footerTextStyle {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .footerTextStyle {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .footerTextStyle {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+#footerButton {
+    padding: 1%;
+    border: 2px solid #7f7e7b;
+    background-color: #151515;
+    color: #7f7e7b;
+}
+
+#footerButton:hover {
+    color: white;
+}
+
+#copyright {
+    padding-top: 2%;
+}
