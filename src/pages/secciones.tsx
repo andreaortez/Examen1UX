@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { styled } from '@mui/system';
 import Carousel from 'react-material-ui-carousel';
 import Stack from '@mui/material/Stack';
-import { Card, CardMedia, CardContent, Typography, useMediaQuery, useTheme, CardActionArea } from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, useMediaQuery, useTheme, CardActionArea, CardProps } from '@mui/material';
 
 // Interfaces
 interface Propiedades {
@@ -17,41 +17,32 @@ interface cardProp {
     titulo: string;
     imagen: string;
 }
-
-//Todo  de Styled se supone que es pal hover, pero capaz cambie
+//TOdo  de Styled se supone que es pal hover, pero capaz cambie
 const StyledCard = styled(Card)(({ theme }) => ({
     maxWidth: '100%',
     transition: "transform 0.15s ease-in-out",
     position: 'relative',
 
     [theme.breakpoints.up('xs')]: {
-        maxWidth: '100%', // Full width on extra-small screens
+        maxWidth: '100%',
     },
     [theme.breakpoints.up('sm')]: {
-        maxWidth: '45%', // 45% width on small screens
+        maxWidth: '45%',
     },
     [theme.breakpoints.up('md')]: {
-        maxWidth: '30%', // 30% width on medium screens
+        maxWidth: '30%',
     },
     [theme.breakpoints.up('lg')]: {
-        maxWidth: '20%', // 20% width on large screens
+        maxWidth: '20%',
     },
     "&:hover": {
         transform: "scale3d(1.25, 1.25, 1)",
-        position: 'relative',
         zIndex: 10,
+        transformOrigin: 'center'
     }
 }));
 
-const StyledTypography = styled(Typography)(({ theme }) => ({
-    position: 'relative',  // Ensure it has a positioning context
-    zIndex: 1,
-    fontSize: '18px',
-    fontWeight: 'bold',
-    color: '#e5e5e5',
-    fontFamily: 'Netflix Sans'
-}));
-
+// Functions
 // Functions
 function Secciones({ titulo, cards }: Propiedades) {
     // Variables
@@ -90,7 +81,7 @@ function Secciones({ titulo, cards }: Propiedades) {
 
     return (
         <div>
-            <StyledTypography
+            <Typography
                 variant='h6'
                 sx={{
                     mt: { xs: 0.5, sm: 1, md: 1.5 },
@@ -99,12 +90,17 @@ function Secciones({ titulo, cards }: Propiedades) {
                 }}
             >
                 {titulo}
-            </StyledTypography>
+            </Typography>
 
             <Carousel
                 indicators={false}
                 autoPlay={false}
                 sx={{
+                    zIndex: 1,
+                    overflow: 'visible',
+                    "&:hover": {
+                        zIndex: 10,
+                    },
                     width: '95vw',
                     mt: { xs: 0.5, sm: 1, md: 1.5 },
                     mb: { xs: 0.5, sm: 1, md: 1.5 },
@@ -116,26 +112,35 @@ function Secciones({ titulo, cards }: Propiedades) {
         </div>
     );
 }
-
 function Item({ imagen, titulo }: cardProp) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <StyledCard
-            onMouseOver={() => setIsHovered(true)}
-            onMouseOut={() => setIsHovered(false)}
-            raised={isHovered}
-        >
-            <CardActionArea>
+        <StyledCard raised={isHovered}>
+            <CardActionArea
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
                 <CardMedia
                     component="img"
                     image={imagen}
                     alt={titulo}
-                    sx={{ maxHeight: '200px', objectFit: 'cover' }} // Adjusts image styling for better display
+                    sx={{ maxHeight: '200px', objectFit: 'cover' }}
                 />
+                {isHovered && (
+                    <CardContent>
+                        <Typography variant="h6">{titulo}</Typography>
+                        <Typography variant="body2">
+                            This impressive paella is a perfect party dish and a fun meal to cook
+                            together with your guests. Add 1 cup of frozen peas along with the
+                            mussels, if you like.
+                        </Typography>
+                    </CardContent>
+                )}
             </CardActionArea>
         </StyledCard>
     );
-}
+};
+
 
 export default Secciones;
