@@ -56,7 +56,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 // Functions
 function Secciones({ titulo, cards }: Propiedades) {
     // Variables
-    const [showCards, setShowCards] = useState(5);
+    const [showCards, setShowCards] = useState(6);
     const smallScreen = useMediaQuery(useTheme().breakpoints.down('sm'));
     const mediumScreen = useMediaQuery(useTheme().breakpoints.down('md'));
     const largeScreen = useMediaQuery(useTheme().breakpoints.down('lg'));
@@ -85,7 +85,7 @@ function Secciones({ titulo, cards }: Propiedades) {
         } else if (largeScreen) {
             setShowCards(4);
         } else if (xlargeScreen) {
-            setShowCards(5);
+            setShowCards(6);
         }
     }, [smallScreen, mediumScreen, largeScreen, xlargeScreen]);
 
@@ -107,7 +107,7 @@ function Secciones({ titulo, cards }: Propiedades) {
                 autoPlay={false}
                 animation="slide"
                 sx={{
-                    width: '95vw',
+                    width: '93vw',
                     mt: { xs: 0.5, sm: 1, md: 1.5 },
                     mb: { xs: 0.5, sm: 1, md: 1.5 },
                     ml: { xs: 1, sm: 2, md: 3 },
