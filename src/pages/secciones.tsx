@@ -44,18 +44,19 @@ const StyledCard = styled(Card)(({ theme }) => ({
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
-    position: 'relative',  // Ensure it has a positioning context
+    position: 'relative',
     zIndex: 1,
     fontSize: '18px',
     fontWeight: 'bold',
     color: '#e5e5e5',
-    fontFamily: 'Netflix Sans'
+    fontFamily: 'Netflix Sans',
+    paddingTop: theme.spacing(3)
 }));
 
 // Functions
 function Secciones({ titulo, cards }: Propiedades) {
     // Variables
-    const [showCards, setShowCards] = useState(6);
+    const [showCards, setShowCards] = useState(5);
     const smallScreen = useMediaQuery(useTheme().breakpoints.down('sm'));
     const mediumScreen = useMediaQuery(useTheme().breakpoints.down('md'));
     const largeScreen = useMediaQuery(useTheme().breakpoints.down('lg'));
@@ -84,7 +85,7 @@ function Secciones({ titulo, cards }: Propiedades) {
         } else if (largeScreen) {
             setShowCards(4);
         } else if (xlargeScreen) {
-            setShowCards(6);
+            setShowCards(5);
         }
     }, [smallScreen, mediumScreen, largeScreen, xlargeScreen]);
 
@@ -104,6 +105,7 @@ function Secciones({ titulo, cards }: Propiedades) {
             <Carousel
                 indicators={false}
                 autoPlay={false}
+                animation="slide"
                 sx={{
                     width: '95vw',
                     mt: { xs: 0.5, sm: 1, md: 1.5 },
