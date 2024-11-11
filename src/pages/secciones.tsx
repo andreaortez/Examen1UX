@@ -1,8 +1,12 @@
-import React, { memo, useEffect, useState } from 'react';
-import { styled } from '@mui/system';
+import React, { useEffect, useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import Stack from '@mui/material/Stack';
-import { Card, CardMedia, CardContent, Typography, useMediaQuery, useTheme, CardActionArea, CardProps } from '@mui/material';
+import { Card, CardActions, CardActionArea , CardMedia, CardContent, IconButton, Typography, useMediaQuery, useTheme} from '@mui/material';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
+import RecommendOutlinedIcon from '@mui/icons-material/RecommendOutlined';
+import ExpandCircleDownOutlinedIcon from '@mui/icons-material/ExpandCircleDownOutlined';
+import LinearProgress from '@mui/material/LinearProgress';
 
 // Interfaces
 interface Propiedades {
@@ -10,37 +14,24 @@ interface Propiedades {
     cards: {
         imagen: string;
         titulo: string;
+        edad: string;
+        detalle: string;//Si son series N° de temporadas, si son películas duración
+        info: string;
+        barra?: number;
+        url: string;
     }[];
+    
 }
 
-interface cardProp {
+interface CardProp {
     titulo: string;
     imagen: string;
+    edad: string;
+    detalle: string;//Si son series N° de temporadas, si son películas duración
+    info: string;
+    barra?: number;
+    url: string;
 }
-//TOdo  de Styled se supone que es pal hover, pero capaz cambie
-const StyledCard = styled(Card)(({ theme }) => ({
-    maxWidth: '100%',
-    transition: "transform 0.15s ease-in-out",
-    position: 'relative',
-
-    [theme.breakpoints.up('xs')]: {
-        maxWidth: '100%',
-    },
-    [theme.breakpoints.up('sm')]: {
-        maxWidth: '45%',
-    },
-    [theme.breakpoints.up('md')]: {
-        maxWidth: '30%',
-    },
-    [theme.breakpoints.up('lg')]: {
-        maxWidth: '20%',
-    },
-    "&:hover": {
-        transform: "scale3d(1.25, 1.25, 1)",
-        zIndex: 10,
-        transformOrigin: 'center'
-    }
-}));
 
 // Functions
 function Secciones({ titulo, cards }: Propiedades) {
@@ -50,21 +41,6 @@ function Secciones({ titulo, cards }: Propiedades) {
     const mediumScreen = useMediaQuery(useTheme().breakpoints.down('md'));
     const largeScreen = useMediaQuery(useTheme().breakpoints.down('lg'));
     const xlargeScreen = useMediaQuery(useTheme().breakpoints.down('xl'));
-
-    const row = () => {
-        let n_stack = Math.ceil(cards.length / showCards);
-        return (
-            Array.from({ length: n_stack }).map((item, i) =>
-                <Stack key={i} direction={"row"} spacing={1} sx={{ justifyContent: "center" }}>
-                    {
-                        cards.slice(i * showCards, i * showCards + showCards).map((card, index) => (
-                            <Item key={index} imagen={card.imagen} titulo={card.titulo} />
-                        ))
-                    }
-                </Stack>
-            )
-        );
-    };
 
     useEffect(() => {
         if (smallScreen) {
@@ -77,6 +53,18 @@ function Secciones({ titulo, cards }: Propiedades) {
             setShowCards(6);
         }
     }, [smallScreen, mediumScreen, largeScreen, xlargeScreen]);
+
+    const row = () => {
+        const n_stack = Math.ceil(cards.length / showCards);
+        return Array.from({ length: n_stack }).map((_, i) => (
+            <Stack key={i} direction={"row"} spacing={1} sx={{ justifyContent: "center" }}>
+                {cards.slice(i * showCards, i * showCards + showCards).map((card, index) => (
+                    <Item key={index} imagen={card.imagen} titulo={card.titulo}
+                        edad={card.edad} detalle={card.detalle} info={card.info} url={card.url} barra={card.barra} />
+                ))}
+            </Stack>
+        ));
+    };
 
     return (
         <div>
@@ -105,42 +93,106 @@ function Secciones({ titulo, cards }: Propiedades) {
                     mt: { xs: 0.5, sm: 1, md: 1.5 },
                     mb: { xs: 0.5, sm: 1, md: 1.5 },
                     ml: { xs: 1, sm: 2, md: 3 },
+                    mr: { xs: 1, sm: 2, md: 3 },
                 }}
             >
                 {row()}
             </Carousel>
         </div>
     );
-}
-function Item({ imagen, titulo }: cardProp) {
+};
+
+const Item = ({ imagen, titulo,edad,detalle,info,barra,url}: CardProp) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <StyledCard raised={isHovered}>
-            <CardActionArea
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+        <div
+            style={{
+                position: 'relative',
+                overflow: 'visible',
+            }}
+        >
+            <Card
+                raised={isHovered}
+                sx={{
+                    transform: isHovered ? "scale(1.25)" : "scale(1)",
+                    zIndex: isHovered ? 10 : 1,
+                    transition: "transform 0.15s ease-in-out",
+                    position: 'relative',
+                    overflow: 'hidden',
+                }}
             >
-                <CardMedia
-                    component="img"
-                    image={imagen}
-                    alt={titulo}
-                    sx={{ maxHeight: '200px', objectFit: 'cover' }}
-                />
-                {isHovered && (
-                    <CardContent>
-                        <Typography variant="h6">{titulo}</Typography>
-                        <Typography variant="body2">
-                            This impressive paella is a perfect party dish and a fun meal to cook
-                            together with your guests. Add 1 cup of frozen peas along with the
-                            mussels, if you like.
-                        </Typography>
-                    </CardContent>
-                )}
-            </CardActionArea>
-        </StyledCard>
+                <CardActionArea
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                >
+                    {isHovered ? (
+                        <CardMedia
+                            component="iframe"
+                            src={url}
+                            title={titulo}
+                            sx={{
+                                maxHeight: '200px',
+                                width: '100%',
+                                objectFit: 'cover',
+                            }}
+                        />
+                    ) : (
+                        <div style={{ position: 'relative' }}>
+                            <CardMedia
+                                component="img"
+                                image={imagen}
+                                alt={titulo}
+                                sx={{ maxHeight: '200px', objectFit: 'cover' }}
+                            />
+                            {barra && (
+                                <LinearProgress
+                                    variant="determinate"
+                                    value={barra} // Replace 50 with a dynamic value if needed
+                                    sx={{
+                                        position: 'absolute',
+                                        bottom: 0,
+                                        width: '100%',
+                                        height: '4px',
+                                        backgroundColor: 'lightgray', 
+                                            '& .MuiLinearProgress-bar': {
+                                                backgroundColor: 'red', 
+                                            },
+                                    }}
+                                />
+                            )}
+                        </div>
+                    )}
+
+                    {isHovered && (
+                        <CardContent style={{ maxWidth: 200 }}>
+                            <CardActions>
+                            <IconButton aria-label="play">
+                                <PlayCircleFilledWhiteOutlinedIcon />
+                            </IconButton>
+                            <IconButton aria-label="add">
+                                <AddCircleOutlineOutlinedIcon />
+                            </IconButton>
+                            <IconButton aria-label="recommended">
+                                <RecommendOutlinedIcon />
+                            </IconButton>
+                            <IconButton>
+                                <ExpandCircleDownOutlinedIcon />
+                            </IconButton>
+                            </CardActions>
+                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                {edad}{" "}{detalle}{" "}HD
+                            </Typography>
+                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                {info}
+                            </Typography>
+                            
+                        </CardContent>
+                    )}
+                </CardActionArea>
+            </Card>
+        </div>
     );
 };
-
 
 export default Secciones;
