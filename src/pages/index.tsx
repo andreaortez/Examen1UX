@@ -150,6 +150,10 @@ const sp_cards = [
         titulo: "Alexa & Katie"
     },
     {
+        imagen: "https://media.licdn.com/dms/image/C4E12AQHeUAUGosjeXQ/article-cover_image-shrink_600_2000/0/1645616618414?e=2147483647&v=beta&t=kvSEVF4JJMfzsfaJQ_A1rJDDIapbhacP84cxzHfOzSU",
+        titulo: "Emily en París"
+    },
+    {
         imagen: "https://www.natasjaonline.nl/wp-content/uploads/20181112-la-casa-de-papel.jpg",
         titulo: "La Casa de Papel"
     },
@@ -157,10 +161,7 @@ const sp_cards = [
         imagen: "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABckvovw1iqrxj2NNM0TlGfiyo4tWhsB0_nQALO4yhVunGfFc8yDgtkzoTb_gONJ00EOF_tvchFLROblfKg3sLXSOvG-6j5856ANuw86TyCNrrIVMbXSaIh5j1SCmt7ZQevEaUA.webp?r=2c8",
         titulo: "Purple Hearts"
     },
-    {
-        imagen: "https://media.licdn.com/dms/image/C4E12AQHeUAUGosjeXQ/article-cover_image-shrink_600_2000/0/1645616618414?e=2147483647&v=beta&t=kvSEVF4JJMfzsfaJQ_A1rJDDIapbhacP84cxzHfOzSU",
-        titulo: "Emily en París"
-    },
+
     {
         imagen: "https://ntvb.tmsimg.com/assets/p23063500_b_h8_ad.jpg?w=1280&h=720",
         titulo: "Wednesday"
