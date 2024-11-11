@@ -257,6 +257,10 @@ const sp_cards = [
         url: " https://www.youtube.com/embed/AN-Wmg8ByVI?controls=0&autoplay=1&mute=1&modestbranding=0&loop=1&color=white&rel=0&playsinline=1&enablejsapi=1&playlist=AN-Wmg8ByVI",
     },
     {
+        imagen: "https://media.licdn.com/dms/image/C4E12AQHeUAUGosjeXQ/article-cover_image-shrink_600_2000/0/1645616618414?e=2147483647&v=beta&t=kvSEVF4JJMfzsfaJQ_A1rJDDIapbhacP84cxzHfOzSU",
+        titulo: "Emily en París"
+    },
+    {
         imagen: "https://www.natasjaonline.nl/wp-content/uploads/20181112-la-casa-de-papel.jpg",
         titulo: "La Casa de Papel",
         edad: "16+",
