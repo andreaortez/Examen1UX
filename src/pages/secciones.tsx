@@ -1,8 +1,12 @@
-import React, { memo, useEffect, useState } from 'react';
-import { styled } from '@mui/system';
+import React, { useEffect, useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import Stack from '@mui/material/Stack';
-import { Card, CardMedia, CardContent, Typography, useMediaQuery, useTheme, CardActionArea } from '@mui/material';
+import { Card, CardActions, CardActionArea , CardMedia, CardContent, IconButton, Typography, useMediaQuery, useTheme} from '@mui/material';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
+import RecommendOutlinedIcon from '@mui/icons-material/RecommendOutlined';
+import ExpandCircleDownOutlinedIcon from '@mui/icons-material/ExpandCircleDownOutlined';
+import LinearProgress from '@mui/material/LinearProgress';
 
 // Interfaces
 interface Propiedades {
@@ -10,12 +14,23 @@ interface Propiedades {
     cards: {
         imagen: string;
         titulo: string;
+        edad: string;
+        detalle: string;//Si son series N° de temporadas, si son películas duración
+        info: string;
+        barra?: number;
+        url: string;
     }[];
+    
 }
 
 interface CardProp {
     titulo: string;
     imagen: string;
+    edad: string;
+    detalle: string;//Si son series N° de temporadas, si son películas duración
+    info: string;
+    barra?: number;
+    url: string;
 }
 
 // Functions
@@ -44,7 +59,8 @@ function Secciones({ titulo, cards }: Propiedades) {
         return Array.from({ length: n_stack }).map((_, i) => (
             <Stack key={i} direction={"row"} spacing={1} sx={{ justifyContent: "center" }}>
                 {cards.slice(i * showCards, i * showCards + showCards).map((card, index) => (
-                    <Item key={index} imagen={card.imagen} titulo={card.titulo} />
+                    <Item key={index} imagen={card.imagen} titulo={card.titulo}
+                        edad={card.edad} detalle={card.detalle} info={card.info} url={card.url} barra={card.barra} />
                 ))}
             </Stack>
         ));
@@ -86,7 +102,7 @@ function Secciones({ titulo, cards }: Propiedades) {
     );
 };
 
-const Item = ({ imagen, titulo }: CardProp) => {
+const Item = ({ imagen, titulo,edad,detalle,info,barra,url}: CardProp) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -110,21 +126,67 @@ const Item = ({ imagen, titulo }: CardProp) => {
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                 >
-                    <CardMedia
-                        component="img"
-                        image={imagen}
-                        alt={titulo}
-                        sx={{ maxHeight: '200px', objectFit: 'cover' }}
-                    />
+                    {isHovered ? (
+                        <CardMedia
+                            component="iframe"
+                            src={url}
+                            title={titulo}
+                            sx={{
+                                maxHeight: '200px',
+                                width: '100%',
+                                objectFit: 'cover',
+                            }}
+                        />
+                    ) : (
+                        <div style={{ position: 'relative' }}>
+                            <CardMedia
+                                component="img"
+                                image={imagen}
+                                alt={titulo}
+                                sx={{ maxHeight: '200px', objectFit: 'cover' }}
+                            />
+                            {barra && (
+                                <LinearProgress
+                                    variant="determinate"
+                                    value={barra} // Replace 50 with a dynamic value if needed
+                                    sx={{
+                                        position: 'absolute',
+                                        bottom: 0,
+                                        width: '100%',
+                                        height: '4px',
+                                        backgroundColor: 'lightgray', 
+                                            '& .MuiLinearProgress-bar': {
+                                                backgroundColor: 'red', 
+                                            },
+                                    }}
+                                />
+                            )}
+                        </div>
+                    )}
 
                     {isHovered && (
                         <CardContent style={{ maxWidth: 200 }}>
-                            <Typography variant="body2">{titulo}</Typography>
-                            <Typography variant="body2">
-                                This impressive paella is a perfect party dish and a fun meal to cook
-                                together with your guests. Add 1 cup of frozen peas along with the
-                                mussels, if you like.
+                            <CardActions>
+                            <IconButton aria-label="play">
+                                <PlayCircleFilledWhiteOutlinedIcon />
+                            </IconButton>
+                            <IconButton aria-label="add">
+                                <AddCircleOutlineOutlinedIcon />
+                            </IconButton>
+                            <IconButton aria-label="recommended">
+                                <RecommendOutlinedIcon />
+                            </IconButton>
+                            <IconButton>
+                                <ExpandCircleDownOutlinedIcon />
+                            </IconButton>
+                            </CardActions>
+                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                {edad}{" "}{detalle}{" "}HD
                             </Typography>
+                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                {info}
+                            </Typography>
+                            
                         </CardContent>
                     )}
                 </CardActionArea>
