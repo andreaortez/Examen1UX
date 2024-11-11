@@ -18,17 +18,14 @@ interface CardProp {
     imagen: string;
 }
 
-
-
 // Functions
-const Secciones = ({ titulo, cards }: Propiedades) => {
-    const theme = useTheme();
-    const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const mediumScreen = useMediaQuery(theme.breakpoints.down('md'));
-    const largeScreen = useMediaQuery(theme.breakpoints.down('lg'));
-    const xlargeScreen = useMediaQuery(theme.breakpoints.down('xl'));
-
-    const [showCards, setShowCards] = useState(5);
+function Secciones({ titulo, cards }: Propiedades) {
+    // Variables
+    const [showCards, setShowCards] = useState(6);
+    const smallScreen = useMediaQuery(useTheme().breakpoints.down('sm'));
+    const mediumScreen = useMediaQuery(useTheme().breakpoints.down('md'));
+    const largeScreen = useMediaQuery(useTheme().breakpoints.down('lg'));
+    const xlargeScreen = useMediaQuery(useTheme().breakpoints.down('xl'));
 
     useEffect(() => {
         if (smallScreen) {
@@ -37,8 +34,8 @@ const Secciones = ({ titulo, cards }: Propiedades) => {
             setShowCards(3);
         } else if (largeScreen) {
             setShowCards(4);
-        } else {
-            setShowCards(5);
+        } else if (xlargeScreen) {
+            setShowCards(6);
         }
     }, [smallScreen, mediumScreen, largeScreen, xlargeScreen]);
 
