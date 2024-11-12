@@ -97,7 +97,6 @@ function ResponsiveAppBar() {
                         }}
                     >
                     </Typography>
-
                     {/* Menú de usuario */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
@@ -189,25 +188,21 @@ function ResponsiveAppBar() {
                             </Button>
                         ))}
                     </Box>
-
                     <Button sx={{ minWidth: 5, padding: 1 }}>
                         < img src="/imagenes/busqueda.png" alt="Buscar"
                             style={{ width: 25, height: 25 }}
                         />
                     </Button>
-
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <Button sx={{ minWidth: 5, padding: 1, color: 'white', textTransform: 'none' }}>
                             <p>Niños</p>
                         </Button>
                     </Box>
-
                     <Button sx={{ minWidth: 5, padding: 1 }}>
                         <img src="/imagenes/notificacion.png" alt="Notificaciones"
                             style={{ width: 25, height: 25 }}
                         />
                     </Button>
-
                     {/* avatar */}
                     <Box sx={{ flexGrow: 0, position: 'relative' }}
                     >
