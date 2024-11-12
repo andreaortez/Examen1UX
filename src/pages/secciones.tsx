@@ -82,6 +82,7 @@ function Secciones({ titulo, cards }: Propiedades) {
                 indicators={false}
                 autoPlay={false}
                 animation="slide"
+                navButtonsAlwaysInvisible={cards.at(0)?.barra ? true : false}
                 sx={{
                     zIndex: 1,
                     overflow: 'visible',
