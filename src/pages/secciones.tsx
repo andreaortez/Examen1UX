@@ -14,19 +14,18 @@ interface Propiedades {
         imagen: string;
         titulo: string;
         edad: string;
-        detalle: string;//Si son series N° de temporadas, si son películas duración
+        detalle: string;//Si son series, N° de temporadas; si son películas, duración
         info: string;
         barra?: number;
         url: string;
     }[];
-
 }
 
 interface CardProp {
     titulo: string;
     imagen: string;
     edad: string;
-    detalle: string;//Si son series N° de temporadas, si son películas duración
+    detalle: string;//Si son series, N° de temporadas; si son películas, duración
     info: string;
     barra?: number;
     url: string;
@@ -54,10 +53,10 @@ function Secciones({ titulo, cards }: Propiedades) {
     }, [smallScreen, mediumScreen, largeScreen, xlargeScreen]);
 
     const row = () => {
-        const n_stack = Math.ceil(cards.length / showCards);
-        return Array.from({ length: n_stack }).map((_, i) => (
+        const n_stack = Math.ceil(cards?.length / showCards);
+        return Array.from({ length: n_stack > 0 ? n_stack : 1 }).map((_, i) => (
             <Stack key={i} direction={"row"} spacing={1} sx={{ justifyContent: "center" }}>
-                {cards.slice(i * showCards, i * showCards + showCards).map((card, index) => (
+                {cards?.slice(i * showCards, i * showCards + showCards).map((card, index) => (
                     <Item key={index} imagen={card.imagen} titulo={card.titulo}
                         edad={card.edad} detalle={card.detalle} info={card.info} url={card.url} barra={card.barra} />
                 ))}
@@ -70,7 +69,7 @@ function Secciones({ titulo, cards }: Propiedades) {
             <Typography
                 variant='h6'
                 sx={{
-                    mt: { xs: 3, sm: 4, md: 5 },
+                    mt: { xs: 4, sm: 5, md: 6 },
                     mb: { xs: 0.5, sm: 1, md: 1.5 },
                     ml: { xs: 1, sm: 2, md: 3 },
                 }}
@@ -82,7 +81,6 @@ function Secciones({ titulo, cards }: Propiedades) {
                 indicators={false}
                 autoPlay={false}
                 animation="slide"
-                navButtonsAlwaysInvisible={cards.at(0)?.barra ? true : false}
                 sx={{
                     zIndex: 1,
                     overflow: 'visible',

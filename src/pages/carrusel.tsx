@@ -45,11 +45,18 @@ function Carrusel() {
     ]
 
     return (
-        <Carousel indicators={false} sx={{ width: '100vw' }}>
+        <Carousel indicators={false}
+            navButtonsAlwaysInvisible={true}
+            sx={{
+                width: '100vw',
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' }
+            }}
+        >
             {
                 slide.map((item, i) => <Item key={i} item={item} />)
             }
-        </Carousel>
+        </ Carousel>
     )
 }
 
@@ -102,7 +109,7 @@ function Item(props: any) {
                             alt="Play"
                             style={{ width: "22px", height: "22px" }}
                         />
-                        Reproducir
+                        <p>Reproducir</p>
                     </Button>
                     <Button className="CheckButton" id="infoButton" style={{ textTransform: 'none' }}>
                         <img
@@ -110,7 +117,7 @@ function Item(props: any) {
                             alt="Play"
                             style={{ width: "25px", height: "25px" }}
                         />
-                        Más información
+                        <p>Más información</p>
                     </Button>
                 </div>
             </div>

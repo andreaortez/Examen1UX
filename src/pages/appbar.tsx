@@ -60,7 +60,7 @@ function ResponsiveAppBar() {
             backgroundColor: bgColor,
             boxShadow: 'none',
             textTransform: 'none',
-            transition: 'background-color 0.3s ease',
+            transition: 'background-color 0.3s ease'
         }}>
             {/* Capa oscura en degradado*/}
             <div
@@ -74,13 +74,13 @@ function ResponsiveAppBar() {
                     zIndex: 0,
                 }}
             ></div>
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
+            <Container maxWidth="xl" sx={{ width: '100vw' }}>
+                <Toolbar disableGutters >
                     <IconButton sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
                         <img
                             src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
                             alt="Logo"
-                            style={{ width: 130, height: 40 }}
+                            style={{ width: 100, height: 30 }}
                         />
                     </IconButton>
                     <Typography
@@ -91,10 +91,9 @@ function ResponsiveAppBar() {
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit'
+                            color: 'inherit',
                         }}
                     >
                     </Typography>
@@ -125,20 +124,28 @@ function ResponsiveAppBar() {
                             }}
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
-                            sx={{ display: { xs: 'block', md: 'none' } }}
+                            sx={{
+                                display: { xs: 'block', md: 'none' },
+                                '& .MuiPaper-root': {
+                                    backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                                    color: 'white',
+                                },
+                            }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
-                                </MenuItem>
-                            ))}
+                            {
+                                pages.map((page) => (
+                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                        <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                                    </MenuItem>
+                                ))
+                            }
                         </Menu>
                     </Box>
                     <IconButton sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}>
                         <img
                             src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png"
                             alt="Logo"
-                            style={{ width: 130, height: 40 }}
+                            style={{ width: 125, height: 40 }}
                         />
                     </IconButton>
                     <Typography
@@ -158,6 +165,7 @@ function ResponsiveAppBar() {
                         }}
                     >
                     </Typography>
+                    {/* Elementos del appbar */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
@@ -173,45 +181,57 @@ function ResponsiveAppBar() {
                                         color: '#adaeae',
                                     },
                                     transition: 'color 0.3s ease',
+                                    fontSize: { xs: '0.775rem', md: '0.67rem', lg: '0.85rem' },
+                                    padding: '1%',
                                 }}
                             >
                                 {page}
                             </Button>
                         ))}
                     </Box>
-                    <Box sx={{
-                        flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', marginRight: 2,
-                    }}>
-                        <Button sx={{ minWidth: 5, padding: 1 }}>
-                            < img src="/imagenes/busqueda.png" alt="Buscar"
-                                style={{ width: 25, height: 25 }}
-                            />
-                        </Button>
+
+                    <Button sx={{ minWidth: 5, padding: 1 }}>
+                        < img src="/imagenes/busqueda.png" alt="Buscar"
+                            style={{ width: 25, height: 25 }}
+                        />
+                    </Button>
+
+                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <Button sx={{ minWidth: 5, padding: 1, color: 'white', textTransform: 'none' }}>
                             <p>Niños</p>
                         </Button>
-                        <Button sx={{ minWidth: 5, padding: 1 }}>
-                            <img src="/imagenes/notificacion.png" alt="Notificaciones"
-                                style={{ width: 25, height: 25 }}
-                            />
-                        </Button>
                     </Box>
+
+                    <Button sx={{ minWidth: 5, padding: 1 }}>
+                        <img src="/imagenes/notificacion.png" alt="Notificaciones"
+                            style={{ width: 25, height: 25 }}
+                        />
+                    </Button>
 
                     {/* avatar */}
                     <Box sx={{ flexGrow: 0, position: 'relative' }}
                     >
                         <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                                 <Avatar alt="Remy Sharp" src="/imagenes/icon.png" sx={{ borderRadius: '10%' }} />
-                                {isMenuOpen ? (
-                                    <ArrowDropUpIcon sx={{ color: 'white', ml: 1 }} />
-                                ) : (
-                                    <ArrowDropDownIcon sx={{ color: 'white', ml: 1 }} />
-                                )}
+                                <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                                    {isMenuOpen ? (
+                                        <ArrowDropUpIcon sx={{ color: 'white', ml: 1 }} />
+                                    ) : (
+                                        <ArrowDropDownIcon sx={{ color: 'white', ml: 1 }} />
+                                    )}
+                                </Box>
                             </IconButton>
                         </Tooltip>
+                        {/* menu desplegable del avatar */}
                         <Menu
-                            sx={{ mt: '45px' }}
+                            sx={{
+                                mt: '45px',
+                                '& .MuiPaper-root': {
+                                    backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                                    color: 'white',
+                                },
+                            }}
                             id="menu-appbar"
                             anchorEl={anchorElUser}
                             anchorOrigin={{
