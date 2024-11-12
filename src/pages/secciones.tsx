@@ -80,7 +80,6 @@ function Secciones({ titulo, cards }: Propiedades) {
             <Carousel
                 indicators={false}
                 autoPlay={false}
-                animation="slide"
                 sx={{
                     zIndex: 1,
                     overflow: 'visible',

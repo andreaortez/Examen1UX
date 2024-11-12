@@ -98,6 +98,14 @@ const r_cards = [
         url: "https://www.youtube.com/embed/Di310WS8zLk?controls=0&autoplay=1&mute=1&modestbranding=0&loop=1&color=white&rel=0&playsinline=1&enablejsapi=1&playlist=Di310WS8zLk",
     },
     {
+        imagen: "https://ntvb.tmsimg.com/assets/p18974714_b_h10_ao.jpg?w=960&h=540",
+        titulo: "Bridgerton",
+        edad: "13+",
+        info: "Romántico · Drama · Siglo XIX",
+        detalle: "3 temporadas",
+        url: "https://www.youtube.com/embed/NyR6u4aUCa4?controls=0&autoplay=1&mute=1&modestbranding=0&loop=1&color=white&rel=0&playsinline=1&enablejsapi=1&playlist=NyR6u4aUCa4",
+    },
+    {
         imagen: "https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABa-9wVzzFizieXcM9ceFRCGt_6jMsNygtN-6c5uXGePyDVSWvpKJ-UdHqiWVhZzMUHSnKUivc0skQmMrMRaCvsx8VHsn3W18RSakfYERLi4u_cIC5EBCitbIvMkzL9PNDaMfEA.jpg?r=44e",
         titulo: "Inventando A Anna",
         edad: "16+",
@@ -120,14 +128,6 @@ const r_cards = [
         info: "Drama · Familia · Lujo",
         detalle: "3 temporadas",
         url: "https://www.youtube.com/embed/Uq0soWMpkv8?controls=0&autoplay=1&mute=1&modestbranding=0&loop=1&color=white&rel=0&playsinline=1&enablejsapi=1&playlist=Uq0soWMpkv8",
-    },
-    {
-        imagen: "https://ntvb.tmsimg.com/assets/p18974714_b_h10_ao.jpg?w=960&h=540",
-        titulo: "Bridgerton",
-        edad: "13+",
-        info: "Romántico · Drama · Siglo XIX",
-        detalle: "3 temporadas",
-        url: "https://www.youtube.com/embed/NyR6u4aUCa4?controls=0&autoplay=1&mute=1&modestbranding=0&loop=1&color=white&rel=0&playsinline=1&enablejsapi=1&playlist=NyR6u4aUCa4",
     },
     {
         imagen: "https://occ-0-8407-114.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABQ7ZdH174DQXtc-Nwij90sXbIdj_wymzelGtsPoLWjyyQNHToo36rKEte-WdQ2j476J8IduCXcALjHXhLbga3QlidKsA3FbSULTiDc5doA5samf4vIFhRj9QAZDmu0a-NZr6Qg.jpg?r=ba6",
