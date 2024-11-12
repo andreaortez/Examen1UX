@@ -35,7 +35,7 @@ const Footer = () => {
                 <button id="footerButton">Código de Servicio</button>
                 <p id="copyright">© 1997-2024 Netflix, Inc.</p>
             </div>
-        </footer>
+        </footer >
     );
 };
 

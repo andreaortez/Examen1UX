@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import localFont from "next/font/local";
 import styles from "@/styles/Home.module.css";
 import * as React from 'react';
@@ -7,17 +6,6 @@ import Carrusel from './carrusel';
 import AppBar from './appbar';
 import Secciones from './secciones';
 import Footer from './footer';
-
-const geistSans = localFont({
-    src: "./fonts/GeistVF.woff",
-    variable: "--font-geist-sans",
-    weight: "100 900",
-});
-const geistMono = localFont({
-    src: "./fonts/GeistMonoVF.woff",
-    variable: "--font-geist-mono",
-    weight: "100 900",
-});
 
 export default function Home() {
     return (
@@ -28,12 +16,12 @@ export default function Home() {
             </Head>
             <AppBar />
             <Carrusel />
-            <Secciones titulo="Continuar Viendo" cards={cv_cards} />
-            <Secciones titulo="Series para Maratonear" cards={r_cards} />
-            <Secciones titulo="Mi Lista" cards={sp_cards} />
-            <Secciones titulo="Favoritos del público" cards={fp_cards} />
-            <Secciones titulo="Series Dramáticas" cards={N_cards} />
-            <Secciones titulo="Volver a verlo" cards={v_cards} />
+            <Secciones titulo="Continuar Viendo" cards={typeof cv_cards === "undefined" ? [] : cv_cards} />
+            <Secciones titulo="Series para Maratonear" cards={typeof r_cards === "undefined" ? [] : r_cards} />
+            <Secciones titulo="Mi Lista" cards={typeof sp_cards === "undefined" ? [] : sp_cards} />
+            <Secciones titulo="Favoritos del público" cards={typeof fp_cards === "undefined" ? [] : fp_cards} />
+            <Secciones titulo="Series Dramáticas" cards={typeof N_cards === "undefined" ? [] : N_cards} />
+            <Secciones titulo="Volver a verlo" cards={typeof v_cards === "undefined" ? [] : v_cards} />
             <Footer />
         </>
     );
