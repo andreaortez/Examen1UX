@@ -19,7 +19,6 @@ interface Propiedades {
         barra?: number;
         url: string;
     }[];
-
 }
 
 interface CardProp {
