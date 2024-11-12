@@ -117,3 +117,56 @@
 #copyright {
     padding-top: 2%;
 }
+
+#playButton2 {
+    background-color: white;
+    align-content: space-evenly;
+    padding: 1.5%;
+}
+
+#play {
+    color: black;
+    font-size: 30px;
+}
+
+.cardButtons {
+    background-color: #242424;
+    border: 1px solid #919191;
+    width: 35px;
+    height: 35px;
+}
+
+.cardIcons {
+    color: #fefefe;
+}
+
+#boxStyle {
+    border: 1px solid #7f7e7b;
+    width: 40px;
+    text-align: center;
+    padding: 1%;
+}
+
+#cardsButtons {
+    display: flex;
+    gap: 10px;
+    padding-right: 32%;
+}
+
+#detailsStyle {
+    display: flex;
+    color: #7f7e7b;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#definitionStyle {
+    border: 1px solid #7f7e7b;
+    border-radius: 15%;
+    width: 25px;
+    text-align: center;
+    padding: 1%;
+    color: #e2e2e2;
+    font-size: 10px;
+    height: 18px;
+}

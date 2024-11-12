@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import Stack from '@mui/material/Stack';
-import { Card, CardActions, CardActionArea , CardMedia, CardContent, IconButton, Typography, useMediaQuery, useTheme} from '@mui/material';
-import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
-import RecommendOutlinedIcon from '@mui/icons-material/RecommendOutlined';
-import ExpandCircleDownOutlinedIcon from '@mui/icons-material/ExpandCircleDownOutlined';
+import { Card, CardActions, IconButton, CardActionArea, CardMedia, CardContent, Typography, useMediaQuery, useTheme, Button } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LinearProgress from '@mui/material/LinearProgress';
 
 // Interfaces
@@ -20,7 +19,7 @@ interface Propiedades {
         barra?: number;
         url: string;
     }[];
-    
+
 }
 
 interface CardProp {
@@ -71,7 +70,7 @@ function Secciones({ titulo, cards }: Propiedades) {
             <Typography
                 variant='h6'
                 sx={{
-                    mt: { xs: 0.5, sm: 1, md: 1.5 },
+                    mt: { xs: 3, sm: 4, md: 5 },
                     mb: { xs: 0.5, sm: 1, md: 1.5 },
                     ml: { xs: 1, sm: 2, md: 3 },
                 }}
@@ -102,7 +101,7 @@ function Secciones({ titulo, cards }: Propiedades) {
     );
 };
 
-const Item = ({ imagen, titulo,edad,detalle,info,barra,url}: CardProp) => {
+const Item = ({ imagen, titulo, edad, detalle, info, barra, url }: CardProp) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -120,6 +119,8 @@ const Item = ({ imagen, titulo,edad,detalle,info,barra,url}: CardProp) => {
                     transition: "transform 0.15s ease-in-out",
                     position: 'relative',
                     overflow: 'hidden',
+                    backgroundColor: '#151515',
+                    color: 'white',
                 }}
             >
                 <CardActionArea
@@ -135,6 +136,7 @@ const Item = ({ imagen, titulo,edad,detalle,info,barra,url}: CardProp) => {
                                 maxHeight: '200px',
                                 width: '100%',
                                 objectFit: 'cover',
+                                border: 'none',
                             }}
                         />
                     ) : (
@@ -154,10 +156,10 @@ const Item = ({ imagen, titulo,edad,detalle,info,barra,url}: CardProp) => {
                                         bottom: 0,
                                         width: '100%',
                                         height: '4px',
-                                        backgroundColor: 'lightgray', 
-                                            '& .MuiLinearProgress-bar': {
-                                                backgroundColor: 'red', 
-                                            },
+                                        backgroundColor: 'lightgray',
+                                        '& .MuiLinearProgress-bar': {
+                                            backgroundColor: 'red',
+                                        },
                                     }}
                                 />
                             )}
@@ -165,33 +167,48 @@ const Item = ({ imagen, titulo,edad,detalle,info,barra,url}: CardProp) => {
                     )}
 
                     {isHovered && (
-                        <CardContent style={{ maxWidth: 200 }}>
-                            <CardActions>
-                            <IconButton aria-label="play">
-                                <PlayCircleFilledWhiteOutlinedIcon />
-                            </IconButton>
-                            <IconButton aria-label="add">
-                                <AddCircleOutlineOutlinedIcon />
-                            </IconButton>
-                            <IconButton aria-label="recommended">
-                                <RecommendOutlinedIcon />
-                            </IconButton>
-                            <IconButton>
-                                <ExpandCircleDownOutlinedIcon />
-                            </IconButton>
+                        <CardContent style={{ width: 265 }}>
+                            <CardActions sx={{ padding: 0 }}>
+                                <div id="cardsButtons">
+                                    <IconButton id="playButton2" aria-label="Play">
+                                        <PlayArrowIcon id="play" />
+                                    </IconButton>
+                                    <IconButton className='cardButtons' aria-label="Add">
+                                        <AddIcon className='cardIcons' />
+                                    </IconButton>
+                                    <IconButton className='cardButtons' aria-label="Like">
+                                        <img
+                                            src="./imagenes/like.png"
+                                            alt="Like"
+                                            style={{ width: "18px", height: "18px" }}
+                                        />
+                                    </IconButton>
+                                </div>
+                                <IconButton className='cardButtons' aria-label="Add">
+                                    <ExpandMoreIcon className='cardIcons' />
+                                </IconButton>
                             </CardActions>
-                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                {edad}{" "}{detalle}{" "}HD
-                            </Typography>
-                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                            <div id="detailsStyle">
+                                <div id="boxStyle">
+                                    {edad}{" "}
+                                </div>
+                                <div style={{ padding: '1.5%', paddingLeft: '5%', paddingRight: '5%' }}>
+                                    {detalle}{" "}
+                                </div>
+                                <div id="definitionStyle">
+                                    <p>HD</p>
+                                </div>
+                            </div>
+
+                            <Typography variant="body2">
                                 {info}
                             </Typography>
-                            
+
                         </CardContent>
                     )}
                 </CardActionArea>
             </Card>
-        </div>
+        </div >
     );
 };
 
