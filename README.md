@@ -1,40 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Netflix Main Page
 
-## Getting Started
+Este proyecto es una réplica del frontend de la página principal de Netflix, desarrollada como parte de la clase de **Experiencia de Usuario**. El objetivo principal es aplicar conceptos de diseño responsivo, interactividad y componentes dinámicos.
 
-First, run the development server:
+## 🎥 Vista Previa
+![Muestra de Netflix](./public/imagenes/demo.gif)
 
+## ✨ Características Principales
+* **Diseño Fiel y Responsivo:** Implementación de fuentes y estilos similares a la plataforma original utilizando `useMediaQuery` y `useTheme` para adaptabilidad.
+* **Secciones Dinámicas:** Organización de contenido en categorías como "Continuar Viendo" y "Mi lista".
+* **Efecto Hover Interactivo:** Al pasar el cursor sobre una Card, se valida el estado para mostrar un adelanto en video en lugar de una imagen estática.
+* **Carrusel Automático:** Sistema de navegación por filas que divide las cartas en grupos para una visualización fluida.
+* **Navegación Eficiente:** Implementación de una AppBar funcional y un Footer detallado.
+
+## 🛠️ Tecnologías Utilizadas
+* **Framework:** Next.js 15.0.2.
+* **Librerías de UI:** React 18, Material UI (@mui/material), Emotion (styled).
+
+## 🚀 Instalación y Ejecución
+Seguí estos pasos para clonar y correr el proyecto en tu máquina local:
+
+### 1. Clonar el proyecto:
+```bash
+git clone [https://github.com/andreaortez/Examen1UX.git](https://github.com/andreaortez/Examen1UX.git)
+```
+### 2. Instalar dependencias:
+Entrá a la carpeta del proyecto y ejecutá:
+```bash
+npm install
+```
+En caso de errores de compilación, podés intentar forzar la versión de React con:
+```bash
+npm install react@^18.0.0 react-dom@^18.0.0
+npm install @mui/material @emotion/react @emotion/styled
+npm install react-material-ui-carousel --save
+```
+### 3. Iniciar el servidor de desarrollo:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+### 4. Ver el resultado
+Una vez que el servidor esté listo, hacé clic en el link generado, y podrás ver la página. Usualmente es `http://localhost:3000`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Link de acceso](./public/imagenes/link.png)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 👥 Colaboradores
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+<table border="0">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/andreaortez">
+        <img src="https://github.com/andreaortez.png" width="90px;" alt="Andrea J. Ortez"/><br />
+        <b>Andrea J. Ortez</b>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Tatiana-Garcia">
+        <img src="https://github.com/Tatiana-Garcia.png" width="90px;" alt="Tatiana Z. Garcia"/><br />
+        <b>Tatiana Z. Garcia</b>
+      </a>
+    </td>
+  </tr>
+</table>
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
