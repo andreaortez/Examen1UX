@@ -21,7 +21,7 @@ Seguí estos pasos para clonar y correr el proyecto en tu máquina local:
 
 ### 1. Clonar el proyecto:
 ```bash
-git clone [https://github.com/andreaortez/Examen1UX.git](https://github.com/andreaortez/Examen1UX.git)
+git clone https://github.com/andreaortez/Examen1UX.git
 ```
 ### 2. Instalar dependencias:
 Entrá a la carpeta del proyecto y ejecutá:
